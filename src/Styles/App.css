@@ -1,0 +1,406 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;900&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Define dark and light palettes with CSS variables */
+/* Light Mode */
+:root {
+    --background: #ffffff;
+    --font: #000000;
+    --header:#dfdfdf1e;
+    --headerFallback:#dfdfdfc2;
+    --headerborder: #ededed9c;
+    --footer: #313F41;
+    --footerborder: #ffffff;
+    --card1:#bebebe;
+    --card2: #e6e6e6;
+    --linkhover: #556459;
+    --logo: url(../Assets/logogreen.svg);
+    --button: #6c837d;
+    --cb-background: #fff;
+    --cb-border: rgb(143, 143, 143);
+    --cb-border-hover: #6c837d;
+    --cb-border-active: #6c837d;
+    --cb-tick: #000000;
+    --search-focus: #6c837d;
+    --input-color: rgb(143, 143, 143);
+    --active-bar: #6c837d;
+    --label: black;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --background: #161c1d;
+    --font: #ffffff;
+    --header:#dfdfdf00;
+    --headerFallback:#2d383ae8;
+    --headerborder: #38515385;
+    --footer: #161c1d;
+    --footerborder: #38515385;
+    --card1: #232d2e;
+    --card2:#334a4d;
+    --linkhover: #84a88e;
+    --logo: url(../Assets/logowhite.svg);
+    --button: #9caea1;
+    --cb-background: #fff;
+    --cb-border: rgb(143, 143, 143);
+    --cb-border-hover: #9caea1;
+    --cb-border-active: #9caea1;
+    --cb-tick: #000000;
+    --search-focus: #84a88e;
+    --input-color: #ffffff;
+    --active-bar:#9caea1;
+    --label: white;
+}
+
+.App{
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    background-color: var(--background);
+    color: var(--font);
+    transition: background-color 0.3s ease;
+}
+
+.openFormButton{
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    perspective: 1000px;
+    border:none;
+    border-radius:50px;
+    padding:0;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    font-size: 1.8rem;
+    font-weight: 500;
+    z-index: 99;
+    transition: transform 0.3s ease;
+}
+
+.openFormButton:hover{
+    transform: scale(0.95);
+}
+
+#flip-button-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius:50px;
+    cursor: pointer;
+}
+
+.flip{
+    transform: rotateY(180deg);
+}
+
+.flip-button-front, .flip-button-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius:150px;
+    
+}
+
+.flip-button-front {
+    background: linear-gradient(48deg, rgba(53,79,82,1) 0%, rgba(132,168,142,1) 80%);
+    color: black;
+    padding-top:10px;
+    
+}
+
+.flip-button-back {
+    background: linear-gradient(48deg, rgb(163, 95, 95) 0%, rgba(250,103,103,1) 100%);
+    color: white;
+    transform: rotateY(180deg);
+    border-radius:50px;
+    font-size: 2rem;
+    padding-top:9px
+}
+
+.couponList{
+    width: 80vw;
+    max-width: 1200px;
+    min-height: 50vh;
+    height: auto;
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    transition: all 0.3s ease-in-out;
+}
+
+.blur{
+    opacity: 0.6;
+    filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.couponList .listHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 180px;
+    margin-bottom: 5%;
+}
+
+.couponList .listHeader .listHeading{
+    margin-right: 0%;
+    font-size: 2.7rem;
+}
+
+.couponList .listHeader .searchField{
+    width: 60%;
+    font-size: 1rem;
+    height: 35px;
+    padding-left: 2%;
+    border-radius: 50px;
+    border: 2px solid rgb(240, 240, 240);
+    transition: border 0.5s ease;
+}
+
+.couponList .listHeader .searchField:focus{
+    border: 2px solid var(--search-focus);
+    outline: none ;
+    transition: border 0.5s ease;
+}
+
+.couponList .wrapper{
+    width: 30%;
+    background: linear-gradient(48deg, rgba(53,79,82,1) 0%, rgba(132,168,142,1) 80%);
+    margin-right: 1.5%;
+    margin-left:1.5%;
+    margin-bottom: 3%;
+    border-radius: 18px;
+}
+
+.couponList .innerWrapper{
+    background: var(--background);
+    padding: 3px;
+    border-radius: 17px;
+    transition: all 0.3s ease;
+}
+
+.couponList .innerWrapper:hover{
+    background: none;
+}
+
+.couponList .couponBox{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 15px;
+    padding: 7%;
+    padding-left: 10%;
+    background: linear-gradient(323deg, var(--card1) 0%, var(--card2) 100%);
+}
+
+.couponList .couponBox a{
+    text-decoration: none;
+    color:var(--font);
+    transition: color 0.3s ease;
+}
+
+.couponList .couponBox a:hover{
+    color:var(--linkhover);
+}
+
+.couponList .couponBox .shopName{
+    width: 100%;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.couponList .couponBox .infoBox{
+    width: 100%;
+    display: inline-flex;
+    font-size: 1.1rem;
+}
+
+.couponList .couponBox .infoBox .couponValue{
+    margin-right: 5%;
+}
+
+.couponList .couponBox .infoBox .category{
+    margin-right: 5%;
+}
+
+.couponList .couponBox .codeBox{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.couponList .couponBox .redeemButton{
+    border:none;
+    position: relative;
+    left: -2%;
+    border-radius: 50px;
+    width: 35%;
+    height: 30px;
+    background-color: var(--button);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 5%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.couponList .couponBox .redeemButton:hover{
+    transform: scale(0.95);  
+}
+
+.hide{
+    opacity: 0;
+    transform: scale(0);
+    transition: all ease-in-out 0.3s;
+}
+
+.couponList .couponBox .couponCode{
+    margin: 0;
+    line-height: 1.7;
+    opacity: 0;
+    position: relative;
+    left: 0;
+    width: 60%;
+    font-weight: 600;
+    font-size: 0;
+    transition: all 0.3s ease;
+    transition-delay: 0.2s ;
+}
+
+.showCoupon{
+    opacity: 1 !important;
+    position: relative;
+    left: -36.5% !important;
+    font-size: 1.1rem!important;
+}
+
+.couponList .couponBox .copyIcon{
+    font-size: 1.6rem;
+    --ionicon-stroke-width: 30px;
+    order:2;
+    transform: scale(0);
+    transition: transform 0.3s ease!important;
+    transition-delay: 0.5s!important;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.couponList .couponBox .copyIcon:hover{
+    color:var(--linkhover);
+
+}
+.showIcon{
+    transform: scale(1) !important;
+}
+
+/*Smartphone Viewport*/
+@media only screen and (max-width: 577px){
+    .openFormButton{
+        width: 60px;
+        height: 60px;
+    }
+
+    .openFormButton .flip-button-front{
+        padding-top:15px;
+    }
+
+    .openFormButton .flip-button-back{
+        padding-top:12px;
+    }
+
+    .couponList .wrapper{
+        width: 100%;
+        margin-bottom: 8%;
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+    
+    .couponList .wrapper .innerWrapper{
+        border-radius: 0px;
+    }
+
+    .couponList .couponBox{
+        width: 100%;
+        margin:0;
+        padding: 6%;
+    }
+
+    .couponList .couponBox .shopName{
+        font-size: 1.6rem;
+    }
+
+    .couponList .couponBox .redeemButton{
+        width: 40%;
+        font-size: 1.1rem;
+        height: 35px;
+    }
+
+    .showCoupon{
+        opacity: 1 !important;
+        position: relative;
+        left: -39% !important;
+    }
+
+    .couponList .listHeader{
+        width: 100%;
+        flex-wrap: wrap;
+        margin-bottom: 30%;
+        margin-top: 20% ;
+        flex-direction: row;
+    }
+
+    .couponList .listHeader .listHeading {
+        font-size: 11vw;
+        margin-left: 4px;
+    }
+
+    .couponList .listHeader .searchField{
+        width: 100%;
+        border-radius: 50px;
+        height: 20%;
+        margin-left: 4px;
+        margin-right: 4px;
+        padding-left: 5%;
+    }
+}
+
+/*Tablet Viewport*/
+@media only screen and (min-width:578px) and (max-width: 1024px){
+    .couponList .wrapper{
+        width: 45%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        height: 1%;
+    }
+}
+
+/* Scrollbar Styling for Webkit Browsers */
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #dfdfdf;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6d6d6d; 
+    border-radius: 10px;
+    margin-top: 10px;
+}

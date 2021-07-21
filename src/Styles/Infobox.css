@@ -1,0 +1,83 @@
+.helpBoxWrapper{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 190;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.openInfo{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.helpBox{
+    position: fixed;
+    top:15%;
+    left:20%;
+    z-index: 99;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60vw;
+    margin: auto;
+    padding: 5%;
+    background: linear-gradient(323deg, var(--card1) 0%, var(--card2) 100%);
+    border-radius: 15px;
+}
+
+.helpBox h4{
+    width: 100%;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.helpBox .subHeading{
+    font-weight: 700;
+}
+
+.helpBox .closeButton{
+    border-radius: 50px;
+    background: linear-gradient(48deg, rgb(163, 95, 95) 0%, rgba(250,103,103,1) 100%);
+    color: white;
+    border: none;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 25px;
+    height: 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding-top: 4px;
+}
+
+.helpBox .closeButton:hover{
+    transform:scale(0.9);
+}
+
+/*Mobile Breakpoint*/
+@media only screen and (max-width: 577px){
+    .helpBox{
+        width: 80%;
+        top:5%;
+        left:10%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+
+    .helpBox .closeButton{
+        top:3%;
+    }
+}
+
+/*Tablet Breakpoint*/
+@media only screen and (min-width:578px) and (max-width: 1024px){
+    .helpBox{
+        width: 70vw;
+        left:15%;
+    }
+}

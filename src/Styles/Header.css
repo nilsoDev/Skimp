@@ -1,0 +1,117 @@
+/* If backdrop is supported by the Browser (Chrome, Edge, Safari) */
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .headerBox{
+        width: 100vw;
+        z-index: 10;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-left: 5%;
+        padding-right: 6.5%;
+        background: var(--header);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: var(--headerborder);
+    }
+}
+
+/* If backdrop is not supported by the Browser (Firefox) */
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+    .headerBox{
+        width: 100vw;
+        z-index: 10;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        padding-left: 5%;
+        padding-right: 6.5%;
+        background: var(--headerFallback);
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: var(--headerborder);
+    }
+}
+
+.headerBox .logo{
+    width: 11%;
+    height: 50px;
+    background-image: var(--logo);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.headerBox nav{
+    display: flex;
+}
+
+.headerBox nav ul{
+    display: flex;
+    justify-content: right;
+    list-style: none;
+    margin: 0;
+}
+
+.headerBox nav ul li{
+    font-size: 1.8rem;
+    padding-top: 10px;
+    transition: color 0.3s ease;
+}
+.headerBox nav ul li:hover{
+    color:var(--linkhover);
+}
+
+.headerBox nav ul .helpIcon{
+    cursor: pointer;
+}
+
+.headerBox nav ul li .headerIconDark{
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+
+.headerBox nav ul li .headerIconLight{
+    position: relative;
+    left: -100%;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+
+.hideIcon{
+    opacity: 0;
+    z-index: -1;
+}
+
+/*Mobile Viewport*/
+@media only screen and (max-width: 577px){
+    .headerBox{
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+    .headerBox .logo{
+        width:40%;
+    }
+    .headerBox nav ul{
+        justify-content: center;
+    }
+}
+
+/*Tablet Viewport*/
+@media only screen and (min-width:578px) and (max-width: 1024px){
+    .headerBox .logo{
+        width:15%;
+        height: 60px;
+    }
+}
